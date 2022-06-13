@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <title>Calculadora</title>
+        
+        </head>
+        <body>
+            <div id="idDivFundo" class="clFundo">                
+                <div class="clCalculadora">
+                    <h1>Calculadora</h1>
+                    <input type="text" id="idCampoResultado" nm="nmCampoResultado">
+                    <table>
+                        <tr>                <!--primeira fileira de botoes-->
+                            <td><button class="clBotaoM" onclick="memoryClear()">MC</button></td>
+                            <td><button class="clBotaoM" onclick="memoryRecall()">MR</button></td>
+                            <td><button class="clBotaoM" onclick="memoryAdd()">M+</button></td>
+                            <td><button class="clBotaoM" onclick="memorySubtract()">M-</button></td>
+                            <td><button class="clBotaoM" onclick="memoryStore()">MS</button></td>                            
+                        </tr>
+
+                        <tr>                <!--Segunda fileira de botoes-->
+                            <td><button class="clbotao" onclick="porcentagem()">%</button></td>
+                            <td><button class="clbotao" onclick="apagarTudo()">CE</button></td>
+                            <td><button class="clbotao" onclick="apagar()">C</button></td>
+                            <td><button class="clbotao" onclick="voltar()">⇦</button></td>
+                        </tr>
+                        <tr>                <!--Terceira fileira de botoes-->
+                            <td><button class="clbotao" onclick="umParaX()">1/x</button></td>
+                            <td><button class="clbotao" onclick="expo2()">x²</button></td>
+                            <td><button class="clbotao" onclick="raizQuad()">√</button></td>
+                            <td><button class="clbotao" onclick="inserir('/')">/</button></td>
+                        </tr>
+                        <tr>                <!--Quarta fileira de botoes-->
+                            <td><button class="clbotao" onclick="inserir('7')">7</button></td>
+                            <td><button class="clbotao" onclick="inserir('8')">8</button></td>
+                            <td><button class="clbotao" onclick="inserir('9')">9</button></td>
+                            <td><button class="clbotao" onclick="inserir('-')">-</button></td>
+                        </tr>
+                        <tr>                <!--Quinta fileira de botoes-->
+                            <td><button class="clbotao" onclick="inserir('4')">4</button></td>
+                            <td><button class="clbotao" onclick="inserir('5')">5</button></td>
+                            <td><button class="clbotao" onclick="inserir('6')">6</button></td>
+                            <td><button class="clbotao" onclick="inserir('+')">+</button></td>
+                        </tr>
+                        <tr>                    <!--Sexta fileira de botoes-->
+                            <td><button class="clbotao" onclick="inserir('1')">1</button></td>
+                            <td><button class="clbotao" onclick="inserir('2')">2</button></td>
+                            <td><button class="clbotao" onclick="inserir('3')">3</button></td>
+                            <td><button class="clbotao" onclick="inserir('*')">x</button></td>
+                            
+                        </tr>
+                        <tr>                <!--ultima fila de botoes-->
+                            <td><button class="clbotao" onclick="inserir('+/-')">+/-</button></td>
+                            <td colspan="1"><button class="clbotao" onclick="inserir('0')">0</button></td>
+                            <td><button class="clbotao" onclick="inserir('.')">.</button></td>
+                            <td rowspan="2"><button class="clbotao" onclick="calcular()">=</button></td>
+                        </tr>
+                        </tr>                       
+                    </table>
+                </div>
+            </div>
+            <script>
+                    
+                /*
+                
+                
+                var num1 = Number(document.getElementById("idCampoResultado").value)
+                let novoNumero = true
+                
+            
+                function inserir(num){ 
+                    numero = document.getElementById('idCampoResultado').value += num
+                    console.log(numero)
+                }
+                */ 
+                  
+                var numero = " "
+                var num1 = Number(document.getElementById("idCampoResultado").value)
+                function inserir(num){ //funcção pra inserir os numeros
+                    numero = document.getElementById('idCampoResultado').value
+                    document.getElementById('idCampoResultado').value = numero + num;
+                    console.log(num)
+                }
+                function apagar()//apaga o q estiver digitado
+                {
+                    document.getElementById("idCampoResultado").value = "";
+                }
+                function voltar()//volta um numero da tela
+                {
+                    var resultado = document.getElementById("idCampoResultado").value;
+                    document.getElementById("idCampoResultado").value = resultado.substring(0, resultado.length -1);
+                }
+
+                function calcular() //executa o calculo, tentei fazer de outras formas, mas a unica de deu certo foi usando a função eval
+                {
+                    var resultado = document.getElementById("idCampoResultado").value;
+                    if(resultado)
+                    {
+                        document.getElementById("idCampoResultado").value = eval(resultado);
+                    }
+                    else
+                    {
+                        document.getElementById("idCampoResultado").value = "Nada..."
+                    }
+                }
+
+                /*
+                function calculate() {
+                    let result;
+
+                    const primeironumero = ""
+                    const segundonumero = ""
+
+                    if (primeironumero || segundonumero) return;
+
+                    switch (this.operation) {
+                    case "+":
+                        result = primeironumero + segundonumero;
+                        break;
+                    case "-":
+                        result = primeironumero - segundonumero;
+                        break;
+                    case "÷":
+                        result = primeironumero / segundonumero;
+                        break;
+                    case "*":
+                        result = primeironumero * segundonumero;
+                        break;
+                    default:
+                        return;
+                    }
+                }*/
+
+                function raizQuad() { //executa raiz quadrada
+                   
+                   num1 = (num1 ** (1/2))
+                   document.getElementById("idCampoResultado").value = num1
+               }
+
+            </script>
+
+
+
+
+        </body>
+</html>
